@@ -2,14 +2,11 @@ import os, sys, string, time, re
 import requests, json, urllib, urllib2, base64
 import io
 
-import sys
-import requests
-
 def main(filepath):
 	with open(filepath, 'r') as content_file:
 		content = content_file.read()
 
-		print("Javascript wordt geminified...")
+		print("Javascript is being minified...")
 
     	postRequest = requests.post("https://javascript-minifier.com/raw", data={'input': content})
     	jsMinified = postRequest.text
@@ -21,7 +18,7 @@ def main(filepath):
     	newFilepath = "/".join(filepathSplit)
     	newFullPath = newFilepath+"/"+newFilename
     	
-    	print("Minified JS wordt opgeslagen...")
+    	print("Saving Minified JS...")
 
     	with io.FileIO(newFullPath, "w") as file:
     		file.write(jsMinified)
